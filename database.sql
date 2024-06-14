@@ -1,3 +1,19 @@
+DROP TABLE IF EXISTS "user" CASCADE;
+DROP TABLE IF EXISTS "monthly_data" CASCADE;
+DROP TABLE IF EXISTS "metrics" CASCADE;
+DROP TABLE IF EXISTS "monthly_metrics" CASCADE;
+DROP TABLE IF EXISTS "industry" CASCADE;
+
+CREATE TABLE "industry" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR, 
+    "profit_margin" DECIMAL, 
+    "asset_turnover_ratio" DECIMAL, 
+    "financial_leverage_ratio" DECIMAL,
+    "return_on_equity" DECIMAL, 
+    "tax_burden" DECIMAL,
+    "interest_burden" DECIMAL 
+);
 
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
@@ -19,7 +35,7 @@ CREATE TABLE "monthly_data" (
     "assets" DECIMAL, 
     "equity" DECIMAL, 
     "tax_rate"DECIMAL,
-    "earning_before_taxes" DECIMAL,
+    "earning_before_taxes" DECIMAL
 );
 
 
@@ -35,20 +51,10 @@ CREATE TABLE "monthly_metrics" (
     "metrics_id" int REFERENCES "metrics" ON DELETE CASCADE,
     "metric_value" DECIMAL, 
     "variance_value" DECIMAL, 
-    "completed_date" DATETIME, 
+    "completed_date" TIMESTAMP, 
     "notes" VARCHAR 
 );
 
-CREATE TABLE "industry" (
-    "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR, 
-    "profit_margin" DECIMAL, 
-    "asset_turnover_ratio" DECIMAL, 
-    "financial_leverage_ratio" DECIMAL,
-    "return_on_equity" DECIMAL, 
-    "tax_burden" DECIMAL,
-    "interest_burden" DECIMAL 
-);
 
 
 
